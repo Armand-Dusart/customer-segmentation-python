@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>PFESEG</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+                
+                
+                <link rel="icon" href="/static/images/logo.png" />
+
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+            
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                    crossorigin="anonymous"></script>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <style>
+@font-face {
+	font-family: "Font From File";
+	src: url('static/fonts/RobotoSlab-Black.ttf');
+}
+                            
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #cacaca; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(68, 68, 68); 
+}
+.title{
+    align-items: center;
+    text-align: center;
+    padding-bottom:5%;
+    padding-top:5%;
+    color:rgb(255, 255, 255);
+    background-color:rgb(224, 148, 48);
+}
+.text_title{
+    font-family:"Font From File";
+    font-size:40px;
+}
+.navbar{
+    padding-top:1%;
+    padding-bottom:1%;
+    background-color:rgb(37, 37, 37);
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    
+}
+
+.logout{
+    float:right;
+    margin-right:10px;
+  background-color: rgb(230, 86, 29);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 6px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px 20px 20px 20px;
+  transition-duration: 0.6s;
+  font-size:15px;
+}
+.logout:hover{
+    background-color: rgb(35, 36, 36);
+    color: white;
+    text-decoration: none;
+}
+.logout:focus {
+    outline:none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    }
+.boutton{
+    float: left;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+ }  
+.notification{
+    margin-left: 14.5%;
+    background-color:crimson;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    width: 70%;
+    border-radius: 20px;
+    margin-top: 2%;
+    margin-bottom:2%;
+} 
+.nav_text{
+    font-family:"Font From File";
+    color:rgb(224, 148, 48);
+    font-size:20px;
+}
+.logo_site{
+    float: left;
+    max-width:4%;
+}
+.main_image{
+    max-width:6%;
+}
+.div_option{
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    margin-top:2%;
+    margin-bottom:2%;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin: 5% 5%;
+}
+.option{
+    margin-right:10px;
+  background-color: rgb(224, 148, 48);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 6px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px 20px 20px 20px;
+  transition-duration: 0.6s;
+  font-size:15px
+}
+.option:hover{
+    background-color: rgb(35, 36, 36);
+    color: white;
+    text-decoration: none;
+}
+.option:focus {
+    outline:none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    }
+.option_title{
+    font-size:30px;
+    font-family: "Font From File";
+}
+.empt{
+    margin: 2% 2%;
+}
+.minion{
+    position:absolute;
+    margin-left: 59%;
+    margin-top:10%;
+}
+.merci{
+    margin-left: 14.5%;
+    background-color:rgb(6, 177, 83);
+    color: white;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    width: 70%;
+    border-radius: 20px;
+    margin-top: 2%;
+    margin-bottom:2%;
+}
+
+                    </style>
+                    
+        </head>
+        
+<body>
+<div class="title">
+    <img src="/static/images/logo_presentation.png" class="main_image" alt="logo_site">
+    <p></p>
+    <label class="text_title">Projet de segmentation client</label>
+</div>
+<div class="navbar">
+    <div class="boutton">
+        <img src="/static/images/logo.png" class="logo_site" alt="logo_site">
+        <a class="logout" href="http://localhost:3000/logout">Logout</a>
+    </div>
+</div>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="notification">
+        {{ messages[0] }}
+    </div>
+    <script>
+        setTimeout(function(){
+        window.location.href = "{{url_for('main.index')}}";
+    }, 3000);
+    </script>
+    {% else %}
+    <div class="merci">
+        Merci de votre visite, vous pouvez consulter votre profil pour plus d'informations
+    </div>
+    <script>
+        setTimeout(function(){
+        window.location.href = "{{url_for('main.menu')}}";
+    }, 5000);
+    </script>
+    {% endif %}
+    {% endwith %}
+
+</body>
+<footer class="up_title"  style="background-color:rgb(51, 51, 51)">
+    <p class="fst-italic" style="color:rgb(167, 167, 167)">Made by : Jules Enguehard, Armand Dusart and Camille Bouberka</p>
+</footer>
+</html>

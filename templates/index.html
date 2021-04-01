@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>PFESEG</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+                
+                
+                <link rel="icon" href="/static/images/logo.png" />
+
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+            
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                    crossorigin="anonymous"></script>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <style>
+@font-face {
+	font-family: "Font From File";
+	src: url('static/fonts/RobotoSlab-Black.ttf');
+}
+                            
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #cacaca; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(68, 68, 68); 
+}
+.title{
+    align-items: center;
+    text-align: center;
+    padding-bottom:5%;
+    padding-top:5%;
+    color:rgb(255, 255, 255);
+    background-color:rgb(224, 148, 48);
+}
+.text_title{
+    font-family:"Font From File";
+    font-size:40px;
+}
+.navbar{
+    padding-top:1%;
+    padding-bottom:1%;
+    background-color:rgb(37, 37, 37);
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    
+}
+
+.login, .signup{
+    float:right;
+    margin-right:10px;
+  background-color: rgb(224, 148, 48);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 6px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px 20px 20px 20px;
+  transition-duration: 0.6s;
+  font-size:15px;
+}
+.login:hover{
+    background-color: rgb(35, 36, 36);
+    color: white;
+    text-decoration: none;
+}
+.signup:hover{
+    background-color: rgb(32, 32, 32);
+    color: white;
+    text-decoration: none;
+}
+.login:focus, .signup:focus {
+    outline:none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    }
+.boutton{
+    float: left;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+ }   
+.nav_text{
+    font-family:"Font From File";
+    color:rgb(224, 148, 48);
+    font-size:20px;
+}
+.logo_site{
+    float: left;
+}
+#carouselExemple {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+} 
+.carr_title{
+    font-family:"Font From File";
+    font-size:50px;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+.logo_site{
+    max-width:4%;
+}
+.main_image{
+    max-width:6%;
+}
+.titre{
+    margin-left:230px;
+}
+
+
+                    </style>
+                    
+        </head>
+        
+<body>
+<div class="title">
+    <img src="/static/images/logo_presentation.png" class="main_image" alt="logo_site">
+    <p></p>
+    <label class="text_title">Projet de segmentation client</label>
+</div>
+<div class="navbar">
+    <div class="boutton">
+        <img src="/static/images/logo.png" class="logo_site" alt="logo_site">
+        <a class="signup" href="http://localhost:3000/signup">Signup</a>
+        <a class="login" href="http://localhost:3000/login">Login</a>
+        <div class='titre'>
+            <label class="nav_text">Home</label>
+        </div>
+    </div>
+</div>
+<div class="carr_title">
+    Présentation
+</div>
+<div id='carouselExemple' class="carousel slide shadow p-3 mb-5 bg-body rounded" data-ride="carousel" data-interval="2000">
+    <div class="carousel-inner">
+            <div class="carousel-item active">
+                    <img src="/static/images/c_1.png" class="c_1 mx-auto d-block" alt="img_1" >
+            </div>
+            <div class="carousel-item">
+                    <img src="/static/images/c_2.png" class="c_2 mx-auto d-block" alt="img_2" >
+            </div>
+            <div class="carousel-item">
+                    <img src="/static/images/c_3.png" class="c_3 mx-auto d-block" alt="img_3">
+            </div>
+    </div>
+</div>
+
+</body>
+<footer class="up_title"  style="background-color:rgb(51, 51, 51)">
+    <p class="fst-italic" style="color:rgb(167, 167, 167)">Made by : Jules Enguehard, Armand Dusart and Camille Bouberka</p>
+</footer>
+</html>

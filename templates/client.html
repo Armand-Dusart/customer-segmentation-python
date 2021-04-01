@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>PFESEG</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+                
+                
+                <link rel="icon" href="/static/images/logo_presentation.png" />
+
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+            
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                    crossorigin="anonymous"></script>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+                    <style>
+@font-face {
+	font-family: "Font From File";
+	src: url("{{ url_for('static', filename='fonts/RobotoSlab-Black.ttf') }}");
+}
+                            
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #cacaca; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(68, 68, 68); 
+}
+#charg{
+    display:none;
+    margin-left: auto;
+    margin-right: auto;
+    width:250px;
+    margin-top:15%;
+}
+.chc{
+    font-family:"Font From File";
+    color:rgb(15, 68, 146);
+    font-size:18px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    margin-right:1%;
+    margin-left:1%;
+    padding: 6px 6px;
+    background-color: rgb(37, 37, 37);
+}
+.chc:hover{
+    cursor: pointer;
+    color: rgba(248, 248, 248, 0.897);
+    text-decoration: none;
+    outline: none;
+}
+.chc:focus {
+    outline:none;
+}
+.title{
+    align-items: center;
+    text-align: center;
+    padding-bottom:5%;
+    padding-top:5%;
+    color:rgb(255, 255, 255);
+    background-color:rgb(15, 68, 146);
+}
+.text_title{
+    font-family:"Font From File";
+    font-size:40px;
+}
+.navbar{
+    padding-top:1%;
+    padding-bottom:1%;
+    background-color:rgb(37, 37, 37);
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    
+}
+
+.logout{
+    float:right;
+    margin-right:10px;
+  background-color: rgb(207, 38, 38);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 6px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px 20px 20px 20px;
+  transition-duration: 0.6s;
+  font-size:15px;
+}
+.logout:hover{
+    background-color: rgb(35, 36, 36);
+    color: white;
+    text-decoration: none;
+}
+.logout:focus {
+    outline:none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    }
+.boutton{
+    float: left;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+ }   
+.logo_site{
+    float: left;
+    max-width:4%;
+}
+.notification{
+    margin-left: 14.5%;
+    background-color:crimson;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    width: 70%;
+    border-radius: 20px;
+    margin-top: 2%;
+    margin-bottom:2%;
+} 
+
+.ca, .cr{
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    margin-top:2%;
+    margin-bottom:2%;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin: 5% 5%;
+    display:none;
+}
+.ca{
+    display:block;
+}
+
+.titre{
+    text-align: center;
+    font-family: "Font From File";
+    font-size:45px;
+    margin-top:1%;
+    color:rgb(15, 68, 146);
+}
+.content .sous-titre{
+    text-align:left;
+    margin-left: 2%;
+    font-family: "Font From File";
+    font-size:30px;
+    margin-top:1%;
+    color:rgb(15, 68, 146);
+}
+.content .sous-sous-titre{
+    text-align: center;
+    font-family: "Font From File";
+    font-size:18px;
+    margin-left:5%;
+    margin-right:5%;
+    margin-top:1%;
+    margin-bottom: 2%;
+    color:rgb(15, 68, 146);
+}
+.text{
+    font-family:Helvetica;
+    margin-left:5%;
+    margin-right:5%;
+    margin-top:1%;
+    text-align: justify;
+}
+.chart{
+    margin-right:auto;
+    margin-left:auto;
+    width:850px;
+    height:500px;
+    margin-top:0;
+}
+
+.sub{
+    font-family:"Font From File";
+    color:rgb(57, 132, 245);
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    padding-top: 0px;
+    
+}
+.sub:hover{
+    cursor: pointer;
+    color: rgb(40, 41, 43);
+    text-decoration: none;
+}
+.sub:focus {
+    outline:none;
+}
+.option{
+    margin-left:150px;
+}
+.sous-nav{
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    padding-top:5px;
+    padding-bottom:5px;
+    margin: auto;
+    width:580px;
+    display:block;
+    border-radius: 0 0 10px 10px;
+    background-color:rgb(15, 68, 146);
+}
+.sous-nav div{
+    margin: auto;
+    width:65%;
+}
+.sous-chc{
+    font-family:"Font From File";
+    color:rgb(230, 230, 230);
+    font-size:15px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    margin-right:1%;
+    margin-left:1%;
+    padding: 6px 6px;
+    background-color:rgb(15, 68, 146);
+}
+.sous-chc:hover{
+    cursor: pointer;
+    color: rgba(32, 32, 32, 0.897);
+    text-decoration: none;
+    outline: none;
+}
+.sous-chc:focus {
+    outline:none;
+}
+
+#client{
+    color: rgba(248, 248, 248, 0.897);
+}
+p{
+    line-height: 5px;
+}
+#ca{
+    color:rgba(32, 32, 32, 0.897);
+}
+.select_seg{
+    text-align: center;
+    font-size:13px;
+    font-family:"Font From File";
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    text-decoration: none;
+    transition: 0.3s;
+    color:black;
+    border: none;
+    margin: auto;
+    padding-top:3px;
+    padding-left:3px;
+    padding-right:3px;
+}
+.select_seg:hover{
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    color:white;
+    background-color: rgb(15, 68, 146);
+}
+.select_seg:focus{
+    outline: none;
+}
+.segment{
+    display:none;
+}
+.center{
+    width: 90%;
+    margin:auto;
+    align-items: center;
+}
+.fixed_header{
+    width: 1000px;
+    margin:auto;
+    table-layout: fixed;
+    border-collapse: collapse;
+    
+}
+
+.fixed_header tbody{
+  display:block;
+  width: 1000px;
+  overflow: auto;
+  height: 60px;
+}
+
+.fixed_header thead tr {
+   display: block;
+   width: 1000px;
+   
+}
+.fixed_header thead tr th{
+    border:4px solid;
+    border-color: black;
+    text-align: center;
+}
+
+.fixed_header thead {
+  background: rgb(15, 68, 146);
+  color:#fff;
+  font-family: 'Font from File';
+    
+}
+
+.fixed_header th, .fixed_header td {
+  padding: 5px;
+  text-align: left;
+  width: 200px;
+  color:white;
+  text-align: center;
+  font-size:13px;
+
+}
+.fixed_header tbody tr{
+    border: 3px solid white;  
+   border-color:#100f1a;
+   background-color:rgb(24, 24, 46);
+}
+.legend{
+    font-size: 13px;
+    margin-top:2px;
+    text-align: center;
+    font-style: italic;
+}
+.select_customer{
+    margin-left:20%;
+    align-items:center;
+    margin-bottom: 2%;
+}
+.seg_c{
+    margin-top:200px;
+    display:none;
+    width:80%;
+    margin:auto;
+    padding-bottom:30px;
+    border: thick double rgb(35, 36, 36);
+    margin-left:10%;
+    margin-right:10%;
+}
+.id_c{
+    font-family: 'Font from File';
+    text-align: center;
+    margin-top:10px;
+
+}
+.fixed_header_2{
+    width: 800px;
+    margin:auto;
+    table-layout: fixed;
+    border-collapse: collapse;
+    
+}
+
+.fixed_header_2 tbody{
+  display:block;
+  width: 800px;
+  overflow: auto;
+  height: 60px;
+}
+
+.fixed_header_2 thead tr {
+   display: block;
+   width: 800px;
+   
+}
+.fixed_header_2 thead tr th{
+    border:4px solid;
+    border-color: black;
+    text-align: center;
+}
+
+.fixed_header_2 thead {
+  background: rgb(15, 68, 146);
+  color:#fff;
+  font-family: 'Font from File';
+    
+}
+
+.fixed_header_2 th, .fixed_header_2 td {
+  padding: 5px;
+  text-align: left;
+  width: 200px;
+  color:white;
+  text-align: center;
+  font-size:13px;
+
+}
+.fixed_header_2 tbody tr{
+    border: 3px solid white;  
+   border-color:#100f1a;
+   background-color:rgb(24, 24, 46);
+}
+
+
+                    </style>
+                    
+        </head>
+        
+<body>
+    <div id="body"> 
+<div class="title">
+    <p></p>
+    <label class="text_title">Projet de segmentation client</label>
+</div>
+<div class="navbar">
+    <div class="boutton">
+        <img src="/static/images/logo_presentation.png" class="logo_site" alt="logo_site">
+        <a class="logout" href="http://localhost:3000/logout">Logout</a>
+        <div class="option">
+        <a class="chc" id="client" onclick="chargement()" href="http://localhost:3000/analyse/client" >Client</a>
+        <a class="chc" id="ensemble" onclick="chargement()" href="http://localhost:3000/analyse/ensemble" >Vue d'ensemble</a>
+        <a class="chc" id="categorie" onclick="chargement()" href="http://localhost:3000/analyse/categorie" >Catégorie</a>
+        </div>
+    </div>
+</div>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="notification">
+        {{ messages[0] }}
+    </div>
+    <script>
+        setTimeout(function(){
+        window.location.href = "{{url_for('main.index')}}";
+    }, 3000);
+    </script>
+    {% endif %}
+    {% endwith %}
+    <div class="sous-nav">
+        <div>   
+        <button class="sous-chc" id="ca" onclick="choice('ca')">Analyse par client</button>
+        <button class="sous-chc" id="cr" onclick="choice('cr')">Analyse par segment client</button>
+        </div>
+    </div>
+    <div class="ca">
+        <div class='titre'>Analyse par client</div>
+        <div class="content"> 
+            <div class="select_customer">
+                <select name="customer", id="input_customer">
+                    {% for i in scatter_client.keys() %}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+                <button class="sub" onclick="choice_customer()">Rechercher</button>
+            </div>
+            <div class="scatter" id="scattergraph"></div>
+            {% for c in scatter_client.keys() %}
+            <div class="seg_c" id="customer_{{c}}">
+                <div class='id_c'>Client n°{{c}}</div>
+                <table class="fixed_header_2">
+                    <thead>
+                    <tr>
+                        <th>Segment</th>
+                        <th>Fréquence</th>
+                        <th>Panier Moyen</th>
+                        <th>Pays</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                    <tr> 
+                    {% for value in df_c[c] %} 
+                        <td>{{value}}</td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+                </table>
+                <table class="fixed_header_2">
+                    <thead>
+                    <tr>
+                        <th>Numéro de produit</th>
+                        <th>Date</th>
+                        <th>Quantité</th>
+                        <th>Prix total</th>
+
+                    </tr>
+                </thead>
+                    <tbody>
+                        
+                    {% for value in achat[c].values %}
+                    <tr>
+                        <td>{{value[0]}}</td>
+                        <td>{{value[1]}}</td>
+                        <td>{{value[2]}}</td>
+                        <td>{{value[3]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+            {% endfor %}
+           <script> 
+           var scatter_c = new Object;
+            {% for c in scatter_client.keys() %}
+            var scat  = {{scatter_client[c] | safe}};
+            scatter_c['{{c}}'] = scat;
+            {% endfor %}
+            function choice_customer(){ 
+                var input = document.getElementById("input_customer").value;
+                document.getElementById("customer_"+input.toString()).style.display = "block";
+                try{
+                  var layout = {
+                 hovermode: true,
+                 title:'Evolution du chiffre d\'affaires par client',
+                 xaxis: {
+              dtick: 1,
+                }
+                  };
+                  Plotly.plot('scattergraph',scatter_c[input],layout,{displayModeBar: false});
+                }
+                catch{
+                  alert('pas de données pour ce client');
+                }
+              }
+            </script> 
+        </div>
+    </div>
+    <div class="cr">
+        <div class='titre'>Analyse par segment client</div>
+        <div class="content">
+            <div class="chart" id='scatter_cat'>
+                <script>
+                    var graphs = {{scatter_cat | safe}};
+                    Plotly.plot('scatter_cat',graphs,{displayModeBar: false});
+                </script>
+            </div>
+            <div class="center">
+        {% for s in seg %}
+        <button onclick="select_segment('{{s}}')" class="select_seg" id="select_seg_{{s}}">{{dict[s]}}</button>
+        {% endfor %}
+    </div>
+        <script>
+            function select_segment(seg){
+                {% for s in seg %}
+                document.getElementById('{{s}}').style.display = "none";
+                document.getElementById('select_seg_{{s}}').style.backgroundColor=  'white';
+                document.getElementById('select_seg_{{s}}').style.color = 'black';
+                {% endfor %}
+                document.getElementById(seg).style.display = "block";
+                document.getElementById('select_seg_'+seg.toString()).style.backgroundColor = 'rgb(15, 68, 146)';
+                document.getElementById('select_seg_'+seg.toString()).style.color = 'white';
+            }
+
+        </script>
+        {% for s in seg %}
+            <div class="segment" id="{{s}}">
+                <div class="titre">{{dict[s]}}</div>
+                <div class="chart" id='bar_seg_{{s}}'>
+                    <script>
+                        var graphs = {{bar_seg[s] | safe}};
+                        Plotly.plot('bar_seg_{{s}}',graphs,{displayModeBar: false});
+                    </script>
+            </div>
+            <div class="center">
+            <table class="fixed_header">
+                <thead>
+                <tr>
+                    <th>Nombre de clients</th>
+                    <th>Médiane du chiffre d'affaires généré</th>
+                    <th>Moyenne du chiffre d'affaires généré</th>
+                    <th>Médiane de la Fréquence d'achat</th>
+                    <th>Moyenne de la Fréquence d'achat</th>
+                    <th>Médiane du panier moyen</th>
+                    <th>Moyenne du panier moyen</th>
+                    <th>Catégorie de produit la plus consommée</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr>
+                {% for value in values[s] %}
+                    <td>{{value}}</td>
+                {% endfor %}
+            </tr>
+            </tbody>
+            </table>
+            <div class="legend">Tableau résumant le segment {{dict[s]}}</div>
+            <div class="chart" id='conso_seg_{{s}}'>
+                <script>
+                    var graphs = {{conso_seg[s] | safe}};
+                    Plotly.plot('conso_seg_{{s}}',graphs,{displayModeBar: false});
+                </script>
+        </div>
+        </div>
+        </div>
+        {% endfor %}
+        
+        </div>
+    <script>
+        function choice(str){
+            $(".ca").css('display','none');
+            $(".cr").css('display','none');
+            $(".ar").css('display','none');
+            $("#ca").css('color','rgb(230, 230, 230)');
+            $("#cr").css('color','rgb(230, 230, 230)');
+            $("#ar").css('color','rgb(230, 230, 230)');
+            $("."+str).css('display','block');
+            $("#"+str).css('color','rgba(32, 32, 32, 0.897)');
+        }
+        $(".modebar").remove();
+    </script>
+    
+    <script>
+        document.getElementById("select_seg_0.0").click()
+        function chargement(){
+            var b = document.getElementById("body");
+            b.style.display = "none";
+            var f = document.getElementById("footer");
+            f.style.display = "none";
+            $("body").css('background-color', 'rgb(239, 240, 240)');
+            $("#charg").css("display","block");
+        }
+    </script>
+    </div>
+    </div>
+    <img src="https://media.giphy.com/media/swhRkVYLJDrCE/giphy.gif" id="charg" alt="graph_gif"/>
+</body>
+<footer id="footer" class="up_title"  style="background-color:rgb(51, 51, 51)">
+    <div class="fst-italic" style="color:rgb(167, 167, 167)">Made by : Jules Enguehard, Armand Dusart and Camille Bouberka</div>
+</footer>
+</html>

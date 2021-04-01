@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>PFESEG</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+                
+                
+                <link rel="icon" href="/static/images/logo.png" />
+
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+            
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                    crossorigin="anonymous"></script>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <style>
+@font-face {
+	font-family: "Font From File";
+	src: url('static/fonts/RobotoSlab-Black.ttf');
+}
+                            
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #cacaca; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(68, 68, 68); 
+}
+.title{
+    align-items: center;
+    text-align: center;
+    padding-bottom:5%;
+    padding-top:5%;
+    color:rgb(255, 255, 255);
+    background-color:rgb(224, 148, 48);
+}
+.text_title{
+    font-family:"Font From File";
+    font-size:40px;
+}
+.navbar{
+    padding-top:1%;
+    padding-bottom:1%;
+    background-color:rgb(37, 37, 37);
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    
+}
+
+.logout{
+    float:right;
+    margin-right:10px;
+  background-color: rgb(230, 86, 29);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 6px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px 20px 20px 20px;
+  transition-duration: 0.6s;
+  font-size:15px;
+}
+.logout:hover{
+    background-color: rgb(35, 36, 36);
+    color: white;
+    text-decoration: none;
+}
+.logout:focus {
+    outline:none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    }
+.boutton{
+    float: left;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+ }   
+.nav_text{
+    font-family:"Font From File";
+    color:rgb(224, 148, 48);
+    font-size:20px;
+}
+.logo_site{
+    float: left;
+    max-width:4%;
+}
+.main_image{
+    max-width:6%;
+}
+
+.option{
+    margin-right:10px;
+  background-color: rgb(224, 148, 48);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 6px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px 20px 20px 20px;
+  transition-duration: 0.6s;
+  font-size:12px;
+}
+.option:hover{
+    background-color: rgb(240, 240, 240);
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.option:focus {
+    outline:none;
+    background-color: rgb(226, 226, 226);
+    color: white;
+    }
+.option_title{
+    font-size:30px;
+    font-family: "Font From File";
+}
+.grid{
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    margin-top:2%;
+    margin-bottom:2%;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin: 5% 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+.product_image{
+    max-width:60%;
+}
+.product{
+    margin:2% 2%;
+    font-family:"Font From File";
+    font-size:13px;
+    text-align: center;
+    margin-bottom: 5%;
+}
+.price{
+    font-family:Helvetica;
+    font-size:16px;
+}
+.panier{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    color: rgb(255, 255, 255);
+    display:none;
+}
+.pos{
+    position:absolute;
+}
+
+.show_panier{
+    text-align: center;
+    float:left;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    border: none;
+    background-color:rgb(224, 148, 48);
+    transition-duration: 0.6s;
+    margin-right:10px;
+    border-radius: 0 0 20px 0;
+    padding: 6px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.6s;
+    font-size:15px;
+    font-family: "Font From File";
+}
+.show_panier:hover{
+    background-color:rgb(36, 36, 35);
+}
+#panier{
+    background-color:rgb(224, 148, 48);
+    display:none;
+    align-items: center;
+    border-radius: 0 0 20px 0;
+    font-size:13px;
+}
+
+
+.payer{
+    margin-right:10px;
+  background-color: rgb(67, 182, 13);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 6px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px 20px 20px 20px;
+  transition-duration: 0.6s;
+  font-size:13px;
+  margin-left:42%;
+  margin-top:2%;
+  font-family: "Font From File";
+}
+.payer:hover{
+    background-color: rgb(240, 240, 240);
+    color: rgb(22, 22, 22);
+    text-decoration: none;
+    cursor: pointer;
+}
+.payer:focus {
+    outline:none;
+    background-color: rgb(226, 226, 226);
+    color: rgb(19, 19, 19);
+    }
+
+.filtre{
+    float:right;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    color:white;
+    background-color:rgb(224, 148, 48);
+    border-radius: 0px 0px 0px 10px;
+}
+.btn_filtrer{
+  background-color: rgb(224, 148, 48);
+  border: none;
+  padding: 4px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 0px 0px 0px 10px;
+  transition-duration: 0.6s;
+  font-size:15px;
+  font-family: "Font From File";
+
+}
+.btn_filtrer:hover{
+    background-color: rgb(37, 37, 37);
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn_filtrer:focus {
+    outline:none;
+    background-color: rgb(37, 37, 37);
+    }
+#filtre_select{
+    margin-right: 2px;
+}
+.supp{
+    background-color: rgb(161, 30, 80);
+  border: none;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px 20px 20px 20px;
+  transition-duration: 0.6s;
+  font-size:10px;
+  font-family: "Font From File";
+  color:white;
+}
+.supp:hover{
+    background-color: rgb(37, 37, 37);
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
+}
+.supp:focus{
+    outline:none;
+    background-color: rgb(37, 37, 37);
+    color:white;
+}
+#from{
+    display:none;
+}
+#total{
+    font-family: "Font From File";
+    background-color:rgb(37, 37, 37);
+    padding: 2% 2%;
+    margin-left:77%;
+    border-radius: 20px 0 20px 0;
+}
+.titre{
+    margin-left:120px;
+}
+
+.fixed_header{
+    width: 600px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    
+}
+
+.fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+  height: 150px;
+}
+
+
+.fixed_header th, .fixed_header td {
+  padding: 5px;
+  text-align: left;
+  width: 200px;
+  color:white;
+
+}
+.fixed_header tbody tr{
+    border: 3px solid white;  
+   border-color:#100f1a;
+   background-color:rgb(24, 24, 46);
+}
+.title_table{
+    width: 600px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.title_table tr {
+    border: 3px solid white;  
+   border-color:#100f1a;
+   background-color:rgb(224, 148, 48);
+}
+
+
+
+                    </style>
+                    
+        </head>
+        
+<body>
+<div class="title">
+    <img src="/static/images/logo_presentation.png" class="main_image" alt="logo_site">
+    <p></p>
+    <label class="text_title">Projet de segmentation client</label>
+</div>
+<div class="navbar">
+    <div class="boutton">
+        <img src="/static/images/logo.png" class="logo_site" alt="logo_site">
+        
+        <a class="logout" href="http://localhost:3000/logout">Logout</a>
+        <div class='titre'>
+            <label class="nav_text">Emplettes</label>
+        </div>
+    </div>
+</div>
+<div class="panier" id="div_panier">
+    <div class="pos">
+    <div id="panier">
+        <table class='title_table'>
+            <tr>
+                <th>Produits</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+                <th></th>
+            </tr>
+        </table>
+        <table class="fixed_header" id="table_panier" cellpadding=2 cellspacing=2>
+        </table>
+        
+        <form action="http://localhost:3000/payer" method="POST" >
+            <div id="form">
+
+              </div>
+              <button class="payer" type="submit">Payer</button>
+              <div id="total">
+
+            </div>
+              
+        </form>
+        
+    </div>
+    <a class="show_panier" id="btn" onclick="show_panier()">Afficher le panier</a>
+</div>
+</div>
+<div class='filtre'>
+    <a class="btn_filtrer" id="filtrer" onclick="filtrer()">filtrer</a>
+    <select id="filtre_select">
+        <option value="Aucun">Aucun</option>
+        {% for i in cat %}
+        <option value="{{i}}">{{i.replace("_"," ")}}</option>
+        {% endfor %}
+    </select>
+</div>
+<script>
+    function show_panier(){
+        var panier = document.getElementById('panier');
+        var btn = document.getElementById('btn');
+        if (panier.style.display == "block"){
+            panier.style.display = "none"; 
+        }
+        else{
+            panier.style.display = "block";
+        }
+        
+    }
+    function filtrer(){
+        var select = document.getElementById("filtre_select").value;
+        if (select != "Aucun"){
+            {% for i in cat %}
+            var {{i}} = document.getElementsByClassName("{{i}}");
+            for (var i=0; i<{{i}}.length;i++)
+            {
+                {{i}}[i].style.display = "none";
+            };
+            {% endfor %}
+            var elements = document.getElementsByClassName(select);
+            for (var i=0; i<elements.length;i++)
+            {
+                elements[i].style.display = "block";
+            };
+        }
+        else{
+            {% for i in cat %}
+            var {{i}} = document.getElementsByClassName("{{i}}");
+            for (var i=0; i<{{i}}.length;i++)
+            {
+                {{i}}[i].style.display = "block";
+                {{i}}[i].style.width = "100%";
+            };
+            {% endfor %}
+        }
+        
+        
+    }
+</script>
+
+<div class="grid">
+    {% for produit in product.values %}
+    <div class="product">
+    <div class="{{produit[3]}}">
+    <img src="/static/images/{{produit[0]}}.png" class="product_image" alt="logo_site">
+    <label id="StockCode_{{produit[0]}}" value="{{produit[1]}}">{{produit[0]}}</label><p></p>
+    <label class="price" id="price_{{produit[0]}}" value="{{produit[2]}}">{{produit[2]}}£</label><p></p>
+    <label class="quant">Quantité</label>
+    <div class="select" >
+        <select id="select_{{produit[0]}}">
+            {% for i in range(1,1000) %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select>
+      </div><p></p>
+      <a class="option" onclick="achat('{{produit[0]}}')">Ajouter au panier</a>
+    </div>
+    </div>
+    {% endfor %}
+</div>
+<script>
+    var panier = [];
+    function afficher(){
+        $("#table_panier td").remove(); 
+        $(".input").remove();
+        var table = document.getElementById("table_panier");
+        var len = panier.length;
+        var total = 0.0;
+        for (var i=0;i<len;i++){
+            $('#form').append("<input class='input' type='text' name='produit_"+i.toString()+"' id='produit_"+i.toString()+"'/>"); 
+            $('#form').append("<input class='input' type='text' name='quantity_"+i.toString()+"' id='quantity_"+i.toString()+"'/>"); 
+            $('#form').append("<input class='input' type='text' name='count_"+i.toString()+"' id='count_"+i.toString()+"'/>"); 
+            $('#form').append("<input class='input' type='text' name='stock_"+i.toString()+"' id='stock_"+i.toString()+"'/>");
+            var doc = document.implementation.createHTMLDocument("Nouveau Document");
+            var a = doc.createElement('a');
+            a.setAttribute("id",i.toString());
+            a.setAttribute("class","supp");
+            a.setAttribute("onclick","supprimer("+i.toString()+")");
+            a.innerHTML = "Supprimer";
+            var row = table.insertRow(i);
+
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+
+            var item = panier[i].split("_");
+            cell1.innerHTML = item[0];
+            cell2.innerHTML = item[1];
+            cell3.innerHTML = item[2]+"£";
+            cell4.appendChild(a);
+
+            document.getElementById("produit_"+i.toString()).value = item[0];
+            document.getElementById("quantity_"+i.toString()).value = item[1];
+            document.getElementById("count_"+i.toString()).value = item[2];
+            document.getElementById("stock_"+i.toString()).value = item[3];
+
+            document.getElementById("produit_"+i.toString()).style.display = "none";
+            document.getElementById("quantity_"+i.toString()).style.display = "none";
+            document.getElementById("count_"+i.toString()).style.display = "none";
+            document.getElementById("stock_"+i.toString()).style.display = "none";
+
+            total += parseFloat(item[2]);
+        };
+        var doc = document.getElementById("total");
+        doc.innerHTML = "Total : "+total.toFixed(2)+" £";
+    }
+    function achat(produit){
+        var div = document.getElementById('div_panier');
+        if (div.style.display = "none"){
+            div.style.display = "block";
+        };
+        var prix = document.getElementById("price_"+produit).getAttribute("value");
+        var quantity = document.getElementById("select_"+produit).value;
+        var count = prix*quantity;
+        count = count.toFixed(2);
+        var stockcode = document.getElementById("StockCode_"+produit).getAttribute("value");
+        panier.push(produit+"_"+quantity.toString()+"_"+count.toString()+"_"+stockcode);
+        afficher();
+    }
+
+    function supprimer(y){
+        if (panier.length != 1){
+            panier.splice(y,1);
+            afficher();
+        }
+        else{
+            panier = [];
+            document.getElementById('div_panier').style.display = "none";
+            alert("Panier Vide");
+        };
+    }
+    
+</script>
+</body>
+<footer class="up_title"  style="background-color:rgb(51, 51, 51)">
+    <p class="fst-italic" style="color:rgb(167, 167, 167)">Made by : Jules Enguehard, Armand Dusart and Camille Bouberka</p>
+</footer>
+</html>

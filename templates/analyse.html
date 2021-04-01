@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>PFESEG</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+                
+                
+                <link rel="icon" href="/static/images/logo_presentation.png" />
+
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossorigin="anonymous"></script>
+            
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                    crossorigin="anonymous"></script>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+                    <style>
+@font-face {
+	font-family: "Font From File";
+	src: url('static/fonts/RobotoSlab-Black.ttf');
+}
+                            
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #cacaca; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(68, 68, 68); 
+}
+.chc{
+    font-family:"Font From File";
+    color:rgb(15, 68, 146);
+    font-size:18px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    margin-right:1%;
+    margin-left:1%;
+    padding: 6px 6px;
+    background-color: rgb(37, 37, 37);
+}
+.chc:hover{
+    cursor: pointer;
+    color: rgba(248, 248, 248, 0.897);
+    outline: none;
+    text-decoration: none;
+}
+.chc:focus {
+    outline:none;
+}
+.title{
+    align-items: center;
+    text-align: center;
+    padding-bottom:5%;
+    padding-top:5%;
+    color:rgb(255, 255, 255);
+    background-color:rgb(15, 68, 146);
+}
+.text_title{
+    font-family:"Font From File";
+    font-size:40px;
+}
+.navbar{
+    padding-top:1%;
+    padding-bottom:1%;
+    background-color:rgb(37, 37, 37);
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    
+}
+
+.logout{
+    float:right;
+    margin-right:10px;
+  background-color: rgb(207, 38, 38);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 6px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px 20px 20px 20px;
+  transition-duration: 0.6s;
+  font-size:15px;
+}
+.logout:hover{
+    background-color: rgb(35, 36, 36);
+    color: white;
+    text-decoration: none;
+}
+.logout:focus {
+    outline:none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    }
+.boutton{
+    float: left;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+ }   
+.logo_site{
+    float: left;
+    max-width:4%;
+}
+.notification{
+    margin-left: 14.5%;
+    background-color:crimson;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    width: 70%;
+    border-radius: 20px;
+    margin-top: 2%;
+    margin-bottom:2%;
+} 
+.option{
+    margin-left:150px;
+}
+
+.start{
+    box-shadow: 10px 2px 20px 0 rgba(0,0,0,0.19);
+    margin-top:2%;
+    margin-bottom:2%;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin: 5% 5%;
+    display:block;
+}
+
+.titre{
+    text-align: center;
+    font-family: "Font From File";
+    font-size:45px;
+    margin-top:1%;
+    color:rgb(15, 68, 146);
+}
+.content .sous-titre{
+    text-align:left;
+    margin-left: 2%;
+    font-family: "Font From File";
+    font-size:30px;
+    margin-top:1%;
+    color:rgb(15, 68, 146);
+}
+.content .sous-sous-titre{
+    text-align:center;
+    margin-left: 2%;
+    font-family: "Font From File";
+    font-size:20px;
+    margin-top:1%;
+    color:rgb(15, 68, 146);
+}
+.button_tuto{
+    font-family:"Font From File";
+    color:rgb(57, 132, 245);
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    padding-top: 0px;
+}
+.button_tuto:hover{
+    cursor: pointer;
+    color: rgb(57, 132, 245);
+}
+.button_tuto:focus {
+    outline:none;
+}
+.text{
+    font-family:Helvetica;
+    margin-left:5%;
+    margin-top:1%;
+}
+.stonk{
+    margin-right:auto;
+    margin-left:30%;
+    width:375px;
+}
+
+#charg{
+    display:none;
+    margin-left: auto;
+    margin-right: auto;
+    width:250px;
+    margin-top:15%;
+}
+
+                    </style>
+                    
+        </head>
+        
+<body>
+    <div id="body">
+<div class="title">
+    <p></p>
+    <label class="text_title">Projet de segmentation client</label>
+</div>
+<div class="navbar">
+    <div class="boutton">
+        <img src="/static/images/logo_presentation.png" class="logo_site" alt="logo_site">
+        <a class="logout" href="http://localhost:3000/logout">Logout</a>
+        <div class="option">
+        <a class="chc"  onclick="chargement()" href="http://localhost:3000/analyse/client" >Client</a>
+        <a class="chc"  onclick="chargement()" href="http://localhost:3000/analyse/ensemble" >Vue d'ensemble</a>
+        <a class="chc"  onclick="chargement()" href="http://localhost:3000/analyse/categorie" >Catégorie</a>
+        </div>
+    </div>
+</div>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="notification">
+        {{ messages[0] }}
+    </div>
+    <script>
+        setTimeout(function(){
+        window.location.href = "{{url_for('main.index')}}";
+    }, 3000);
+    </script>
+    {% endif %}
+    {% endwith %}
+    <div class="start">
+        <div class='titre'>Commencer</div>
+        <div class="content">
+            <div class="sous-titre">Tutoriel</div>
+            <div class="text">
+                Vous pouvez consulter et générer des graphiques vous aidant à comprendre le comportement de nos clients <p>
+                Pour cela, vous avez plusieurs options :<p></p>
+                o Consulter la rubrique <a class="button_tuto" onclick="chargement()" href="http://localhost:3000/analyse/client" >Client</a> pour obtenir des informations sur la segmentation client
+                ou sur un client particulier<p></p>
+                o Consulter la rubrique <a class="button_tuto" onclick="chargement()" href="http://localhost:3000/analyse/ensemble" >Vue d'ensemble</a> pour obtenir des 
+                informations sur l'ensemble de l'activité de l'entreprise pendant les 12 derniers mois<p></p>
+                o Consulter la rubrique <a class="button_tuto" onclick="chargement()" href="http://localhost:3000/analyse/categorie" >Catégorie</a> pour obtenir des informations sur les catégories des produits
+            </div>
+        </div>
+        <div class="content">
+            <div class="sous-titre">News</div>
+            <div class="text">
+                Grâce au travail acharné de notre meilleur équipe, la nouvelle application de segmentation client a permis<p>
+                de faire bondir les résultats de l'entreprise de 200%<p>
+                
+                <img src="https://media.giphy.com/media/YnkMcHgNIMW4Yfmjxr/giphy.gif" class="stonk" alt="stonk_gif"  />
+            </div>
+        </div>
+    </div>
+</div>
+<img src="https://media.giphy.com/media/swhRkVYLJDrCE/giphy.gif" id="charg" alt="graph_gif"/>
+    <script>
+        function chargement(){
+            var b = document.getElementById("body");
+            b.style.display = "none";
+            var f = document.getElementById("footer");
+            f.style.display = "none";
+            $("body").css('background-color', 'rgb(239, 240, 240)');
+            $("#charg").css("display","block");
+        }
+    </script>
+</body>
+<footer id="footer" class="up_title"  style="background-color:rgb(51, 51, 51)">
+    <p class="fst-italic" style="color:rgb(167, 167, 167)">Made by : Jules Enguehard, Armand Dusart and Camille Bouberka</p>
+</footer>
+</html>
