@@ -1,2 +1,2 @@
-# customer-segmentation-python
-Customer segmentation with python (kmean, logReg)
+# Customer segmentation in python
+
